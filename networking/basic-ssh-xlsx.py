@@ -9,7 +9,6 @@ from paramiko.ssh_exception import SSHException
 from netmiko.ssh_exception import NetMikoTimeoutException
 from netmiko.ssh_exception import NetMikoAuthenticationException
 
-
 # Create workbook & add sheet
 workbook = xlsxwriter.Workbook('config.xlsx')
 worksheet = workbook.add_worksheet()
