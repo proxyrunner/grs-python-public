@@ -17,6 +17,8 @@ We see that __type__ specifies the data types.
 
 We also see that __len__ specifies the literal length of the data type.
 
+Please see ![File Manipulation](https://github.com/gil-ryan/grs-python-public/blob/master/py-admin-fundamentals/file-manipulation.md) for more information on __open__ and __readlines()__ as issed Python commands.
+
 ## List Slicing
 
 Above we've opened a particular text file, when using list slicing, it will always include the first element, but __not__ element '5'. For example:
