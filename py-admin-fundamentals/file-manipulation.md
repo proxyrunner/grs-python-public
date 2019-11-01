@@ -9,3 +9,8 @@ We'll be using iPython to accomplish most of these tasks. I details more informa
 stdin and stdout are methods of input and output for data manipulation. Mastering this is quintessential for master Python and programming itself.
 
 ## Reading Files
+
+
+## Dir Command
+
+The __dir__ command is another essential:

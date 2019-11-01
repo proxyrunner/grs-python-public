@@ -73,3 +73,5 @@ Out[29]:
 ```
 
 Notice it works the same way with _negative_ indices.
+
+## Strings
