@@ -18,12 +18,15 @@ class Animal(object):
     def __str__(self):
         return "person:"+str(self.name)+":"+str(self.age)
 
-# Subclass
+# Subclass 1
+
 class Cat(Animal):
     def speak(self):
         print("meow")
     def __str__(self):
         return "cat:"+str(self.name)+":"+str(self.age)
+
+# Subclass 2
 
 class Person(Animal):
 	def __init__(self, name, age):
@@ -48,6 +51,8 @@ class Person(Animal):
 	def __str__(self):
 		return "person:"+str(self.name)+":"+str(self.age)
 
+# Subclass 3
+
 class Student(Person):
         def __init__(self,name,age,major=None):
             Person.__init__(self,name,age)
@@ -66,3 +71,22 @@ class Student(Person):
                 print("I am watching TV")
         def __str__(self):
             return "student:"+str(self.name)+":"+str(self.age)+":"+str(self.major)
+
+# Subclass 4
+
+class Rabbit(Animal):
+    tag = 1
+    def __init__(self, age, parent1=None, parent2=None):
+        Animal.__init__(self,age)
+        self.parent1 = parent1
+        self.parent2 = parent2
+        self.rid = Rabbit.tag
+        Rabbit.tag +=1
+
+    def get_rid(self):
+        return str(self.rid).zfill(3)
+    def get_parent1(self):
+        return self.parent1
+    def get_parent2(self):
+        return self.parent2
+

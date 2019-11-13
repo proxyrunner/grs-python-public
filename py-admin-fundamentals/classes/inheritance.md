@@ -80,6 +80,11 @@ class Person(Animal):
 
 #### Subclass 3
 
+* subclass can have methods with the same name as superclass
+* for an instance of a class, look for a method name in current class definition
+* if not found, look for method name up the hierarchy (in parent, then grandparent, and so on)
+* use first method up the hierarchy that you found with that method name
+
 ```python
 # Subclass 3
 
@@ -101,4 +106,26 @@ class Student(Person):
                 print("I am watching TV")
         def __str__(self):
             return "student:"+str(self.name)+":"+str(self.age)+":"+str(self.major)
+```
+
+
+### Lets use __tag__ to give a unique ID to each rabbit instance
+
+#### Subclass 4
+
+```python
+class Rabbit(Animal):
+    tag = 1
+    def __init__(self, age, parent1=None, parent2=None):
+        Animal.__init__(self,age)
+        self.parent1 = parent1
+        self.parent2 = parent2
+        self.rid = Rabbit.tag
+        Rabbit.tag +=1
+```
+
+### Working with your own Types
+
+```python
+
 ```
