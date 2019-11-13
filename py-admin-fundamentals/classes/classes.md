@@ -27,7 +27,7 @@
 - [ ] create __instances__ of object type
 _ [ ] do __operations__ with them
 
-## Defining Classes
+## Defining Parent Classes
 
 ```python
 class Animal(object):
