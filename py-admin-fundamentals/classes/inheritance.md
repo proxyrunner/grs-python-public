@@ -127,5 +127,38 @@ class Rabbit(Animal):
 ### Working with your own Types
 
 ```python
-
+def __add__(self, other):
+        # return object of same type as this class
+        return Rabbit(0, self, other)
 ```
+
+* define __+ operator__ between two _Rabbit_ instances
+    + define what something like this does: _r4 = r1 + r2_ where _r1_ and _r2_ are _Rabbit_ instances
+    + _r4_ is a new _Rabbit_ instance with age 0
+    + _r4_ has _self_ as one parent and _other_ as the other parent
+    + in __init__, __parent1 and parent2 are of type Rabbit__
+
+* device that two rabbits are equal if they have the __same two parents__
+
+```python
+def __eq__(self,other):
+        parents_same = self.parent1.rid == other.parent1.rid
+            and self.parent2.rid == other.parent2.rid
+        parents_opposite = self.parent2.rid == other.parent1.rid
+            and self.parent1.rid == other.parent2.rid
+        return parents_same or parents_opposite
+```
+
+* compare ids of parents since ids are unique
+* note you can't compare objects directly
+    + for example, with self.parent1 == other.parent1
+    + this calls the __eq__ method over and over until call it on Nonce and gives and AttributeError when it tries to do None.parent1
+
+## OOP
+
+* create your own collection of data
+* organize information
+* division of work
+* access information in a consistent manner
+* add layers of complexity
+* like functions, classes are a mechanism for decomposition and abstraction in programming
