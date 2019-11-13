@@ -40,7 +40,7 @@ myanimal = Animal(3)
 
 ### Getter & Setter
 
-Utilizing class _Animal_, we instantiate getter and setter methods int he same instance.
+Utilizing class _Animal_, we instantiate getter and setter methods in the same instance.
 
 ```python
 def get_age(self):
