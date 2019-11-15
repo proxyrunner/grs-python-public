@@ -53,7 +53,6 @@ But it also adds new functionality
 
 ```python
 # Subclass 2
-
 class Person(Animal):
 	def __init__(self, name, age):
 		Animal.__init__(self, age)
