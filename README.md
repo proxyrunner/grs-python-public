@@ -4,13 +4,11 @@
 
 ## Directory
 
-### Introductory
+### Libraries
 
-* [Branching and Iteration]()
-* [String Manipulation]()
-* [Guess and Check]()
+* CSVs
+* JINJA
+* JSON3
+* YAML
 
-### Intermediate
-
-### Advanced
-
+###     
