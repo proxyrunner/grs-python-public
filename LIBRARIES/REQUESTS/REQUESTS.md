@@ -1,8 +1,36 @@
-# Requests Library
-
-## Notes
+# Requests 
 
 * Checkout uncurl for python
+
+## Getting started with Requests
+
+### Get
+
+One of the most common HTTP methods is GET. The GET method indicaes that you’re trying to get or retrieve data from a specified resource. To make a GET request, invoke requests.get().
+
+### Head
+
+### Post
+
+### Put
+
+### Delete
+
+### Options
+
+### Trace
+
+---
+
+## Custom Headers
+
+Adding HTTP headers to a request is done by simply passing a dictionary to the header’s parameters.
+
+```python
+url = “https://api.github.com/some/endpoint'
+headers = {‘user-agent’ : ‘my-app/0.0.1’}
+r = requests.get(url,headers=headers)
+```
 
 ## Examples
 
@@ -12,8 +40,6 @@ uncurl curl -u 91b649f241e84abe93b9c4fcb33e7c41:293eNtJLWJYj7zuBWOO5e2b24oUqbpCo
 header = {'PRIVATE-TOKEN': 'my_token'}
 response = requests.get(myUrl, headers=header)
 ```
-
-### -
 
 ```python
 import requests
@@ -28,15 +54,8 @@ import requests
 from requests.auth import HTTPBasicAuth
 from getpass import getpass
 
-# Getting started with Requests
 
-## Get
-
-One of the most common HTTP methods is GET. The GET method indicaes that you’re trying to get or retrieve data from a specified resource. To make a GET request, invoke requests.get().
-
-### Response 
-
-Example from HTTP for humans:
+### Example from HTTP for humans:
 
 ```python
 r = requests.get('https://api.github.com/user', auth=('user', 'pw'))
@@ -52,16 +71,44 @@ r.json()
 {'private_gists': 419, 'total_private_repos': 77, ...}
 ```
 
+### Binary Response Content
 
-# Sample Token Script
+```
+from PIL import Image
+from io import BytesIO
 
-## Simple Token
+i = Image.open(BytesIO(r.content))
 
-response = requests.get('https://website.com/id', 
-    headers={'Authorization': 'access_token myToken'})
+>>> import requests
 
-response = requests.get('https://us.battle.net/oauth/token', 
-    headers={'Authorization': 'USaNbgqv2lEHqi1xznESNsIVHCQQFtD1SB'})
+>>> r = requests.get('https://api.github.com/events')
+>>> r.json()
+[{'repository': {'open_issues': 0, 'url': 'https://github.com/...
+```
+
+When JSON encoding fails, it will raise an exception. Sometimes with a code 204 (no content), or the VlaueError: No JSON could be decoded.
+
+Always consider the the success of a .json() call does not indicate the success of the response. Some servers return a JSON object in a failed response. To check for a successful request, use r.raise_for_status() or check r.status_code is what you expect.
+
+### Raw Response Content
+
+In the rare case that you’d like to get the raw socket response from the server, you can access r.raw. When accessing __raw__, make sure you set the parameter _stream=___True__ in your initial request. Once you do, here are the results:
+
+```python
+> r = requests.get('https://api.github.com/events', stream=True)
+
+
+>>> i = requests.get('https://api.github.com/events', stream=True)
+>>> i.raw
+<urllib3.response.HTTPResponse object at 0x10ea84da0>
+>>> i.raw.read(10)
+b'\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\x03'
+
+with open(filename.txt, 'wb') as fd:
+    for chunk in i.iter_content(chunk_size=128):
+        fd.write(chunk)
+```
+
 
 ## Other
 
@@ -84,6 +131,12 @@ r = requests.get('https://us.battle.net/oauth/token', headers=headers, verify=Fa
 j = json.loads(r.text)
 print(json.dumps(j, indent=4))
 ```
+
+```python
+
+"""
+You're using loops to take the items in a dictionary returned from web requests and organizing.
+"""
 import requests
 from getpass import getpass
 
@@ -169,14 +222,17 @@ Referrer-Policy  :  origin-when-cross-origin, strict-origin-when-cross-origin
 Content-Security-Policy  :  default-src 'none'
 Content-Encoding  :  gzip
 X-GitHub-Request-Id  :  D164:5C1B:59A1EA:1088705:5F399ABE
+```
 
+```python
 t = requests.get('https://api.github.com/events')
+```
 
-post request
+### post request
 
 t = requests.post('https://httpbin.org/post', data = {'key':'value'})
 
-other requests
+### other requests
 
 r = requests.put('https://httpbin.org/put', data = {'key':'value'})
 r = requests.delete('https://httpbin.org/delete')
@@ -184,8 +240,9 @@ r = requests.head('https://httpbin.org/get')
 r = requests.options('https://httpbin.org/get')
 
 
-passing parameters in requests
+## Passing parameters in requests
 
+```python
 payload = {'key1':'value1','key2':'value2'}
 y = requests.get('https://httpbin.org/get', params=payload)
 
@@ -202,56 +259,13 @@ y = requests.get('https://httpbin.org/get', params=payload)
 
 for x in range(len(a)): 
     print a[x], 
+```
+
+### Encoding
 
 
-Encoding
-
+```
 r.encoding
 'utf-8'
 r.encoding = 'ISO-8859-1'
-
-
-Binary Response Content
-
-from PIL import Image
-from io import BytesIO
-
-i = Image.open(BytesIO(r.content))
-
->>> import requests
-
->>> r = requests.get('https://api.github.com/events')
->>> r.json()
-[{'repository': {'open_issues': 0, 'url': 'https://github.com/...
-
-When JSON encoding fails, it will raise an exception. Sometimes with a code 204 (no content), or the VlaueError: No JSON could be decoded.
-
-Always consider the the success of a .json() call does not indicate the success of the response. Some servers return a JSON object in a failed response. To check for a successful request, use r.raise_for_status() or check r.status_code is what you expect.
-
-Raw Response Content
-
-In the rare case that you’d like to get the raw socket response from the server, you can access r.raw. When accessing __raw__, make sure you set the parameter _stream=___True__ in your initial request. Once you do, here are the results:
-
-
-> r = requests.get('https://api.github.com/events', stream=True)
-
-
->>> i = requests.get('https://api.github.com/events', stream=True)
->>> i.raw
-<urllib3.response.HTTPResponse object at 0x10ea84da0>
->>> i.raw.read(10)
-b'\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\x03'
-
-with open(filename.txt, 'wb') as fd:
-    for chunk in i.iter_content(chunk_size=128):
-        fd.write(chunk)
-
-Custom Headers
-
-Adding HTTP headers to a request is done by simply passing a dictionary to the header’s parameters.
-
-```python
-url = “https://api.github.com/some/endpoint'
-headers = {‘user-agent’ : ‘my-app/0.0.1’}
-r = requests.get(url,headers=headers)
 ```
