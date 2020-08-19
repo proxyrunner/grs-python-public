@@ -32,7 +32,7 @@ from getpass import getpass
 
 ## Get
 
-One of the most common HTTP methods is GET. The GET method indicates that you’re trying to get or retrieve data from a specified resource. To make a GET request, invoke requests.get().
+One of the most common HTTP methods is GET. The GET method indicaes that you’re trying to get or retrieve data from a specified resource. To make a GET request, invoke requests.get().
 
 ### Response 
 
