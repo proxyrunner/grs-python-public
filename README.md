@@ -4,7 +4,7 @@
 
 ## Directory
 
-* [Web Requests]()
+* [Web Requests](https://github.com/gil-ryan/grs-python-public/tree/master/LIBRARIES/REQUESTS)
 
 
 ### Libraries
