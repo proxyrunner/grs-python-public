@@ -108,5 +108,4 @@ r.cookies['example_cookie_name']
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 requests.exceptions.Timeout: HTTPConnectionPool(host='github.com', port=80): Request timed out. (timeout=0.001)
-
 ```
