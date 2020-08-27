@@ -1,0 +1,9 @@
+# Sample Data
+
+Because you're too lazy to type it! Although, deploying information this way tends to be more accurate anyway. :)
+
+## Lists
+
+ip_addr = ['10.1.1.1', '192.168.1.1', '172.16.1.1']
+
+## Dictionary
