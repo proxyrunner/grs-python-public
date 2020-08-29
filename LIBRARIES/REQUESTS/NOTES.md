@@ -1,3 +1,6 @@
+# Notes
+
+```python
 import requests
 from getpass import getpass
 
@@ -12,7 +15,6 @@ print(key, ' : ', value)
 
 for key, value in dict1.items():
 	print(key, ' : ', value)
-
 
 >>> for key, value in dict1.items():
 ...     print(key, ' : ', value)
@@ -116,37 +118,42 @@ y = requests.get('https://httpbin.org/get', params=payload)
 
 for x in range(len(a)): 
     print a[x], 
+```
 
+## Encoding
 
-Encoding
-
+```
 r.encoding
 'utf-8'
 r.encoding = 'ISO-8859-1'
+```
 
+## Binary Response Content
 
-Binary Response Content
-
+```
 from PIL import Image
 from io import BytesIO
 
 i = Image.open(BytesIO(r.content))
+```
 
+```
 >>> import requests
 
 >>> r = requests.get('https://api.github.com/events')
 >>> r.json()
 [{'repository': {'open_issues': 0, 'url': 'https://github.com/...
+```
 
 When JSON encoding fails, it will raise an exception. Sometimes with a code 204 (no content), or the VlaueError: No JSON could be decoded.
 
 Always consider the the success of a .json() call does not indicate the success of the response. Some servers return a JSON object in a failed response. To check for a successful request, use r.raise_for_status() or check r.status_code is what you expect.
 
-Raw Response Content
+## Raw Response Content
 
 In the rare case that you’d like to get the raw socket response from the server, you can access r.raw. When accessing __raw__, make sure you set the parameter _stream=___True__ in your initial request. Once you do, here are the results:
 
-
+```
 > r = requests.get('https://api.github.com/events', stream=True)
 
 
@@ -159,8 +166,8 @@ b'\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\x03'
 with open(filename.txt, 'wb') as fd:
     for chunk in i.iter_content(chunk_size=128):
         fd.write(chunk)
-
-Custom Headers
+```
+## Custom Headers
 
 Adding HTTP headers to a request is done by simply passing a dictionary to the header’s parameters.
 
