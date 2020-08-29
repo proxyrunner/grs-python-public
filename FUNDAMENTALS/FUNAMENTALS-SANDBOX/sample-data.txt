@@ -7,3 +7,5 @@ Because you're too lazy to type it! Although, deploying information this way ten
 ip_addr = ['10.1.1.1', '192.168.1.1', '172.16.1.1']
 
 ## Dictionary
+
+parameters = {'key1': 'value1', 'key2': 'value2'}

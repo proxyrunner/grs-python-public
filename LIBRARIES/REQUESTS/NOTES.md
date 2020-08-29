@@ -176,3 +176,20 @@ url = “https://api.github.com/some/endpoint'
 headers = {‘user-agent’ : ‘my-app/0.0.1’}
 r = requests.get(url,headers=headers)
 ```
+
+
+## General Request Template
+
+r = requests.get('url', params=parameters)
+
+## Example with auth tuple parameter
+
+>>> r = requests.get('https://api.github.com/user', auth=('myemailid.mail.com', 'password'))
+>>> r.status_code
+200
+>>> r.url
+u'https://api.github.com/user'
+>>> r.request
+<PreparedRequest [GET]>
+
+## Response Content
