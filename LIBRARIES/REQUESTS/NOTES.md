@@ -8,8 +8,10 @@ user = input(“Enter username: “)
 pw = getpass()
 
 r = requests.get('https://api.github.com/user', auth=(user, pw))
+```
 
 
+```python
 for key, value in student_score.items():
 print(key, ' : ', value)
 
@@ -85,14 +87,18 @@ Referrer-Policy  :  origin-when-cross-origin, strict-origin-when-cross-origin
 Content-Security-Policy  :  default-src 'none'
 Content-Encoding  :  gzip
 X-GitHub-Request-Id  :  D164:5C1B:59A1EA:1088705:5F399ABE
+```
+
+##
 
 t = requests.get('https://api.github.com/events')
 
-post request
+
+### post request
 
 t = requests.post('https://httpbin.org/post', data = {'key':'value'})
 
-other requests
+### other requests
 
 r = requests.put('https://httpbin.org/put', data = {'key':'value'})
 r = requests.delete('https://httpbin.org/delete')
@@ -100,8 +106,10 @@ r = requests.head('https://httpbin.org/get')
 r = requests.options('https://httpbin.org/get')
 
 
-passing parameters in requests
+### passing parameters in requests
 
+
+```python
 payload = {'key1':'value1','key2':'value2'}
 y = requests.get('https://httpbin.org/get', params=payload)
 
@@ -114,7 +122,6 @@ y = requests.get('https://httpbin.org/get', params=payload)
 >>> y.url
 'https://httpbin.org/get?key1=value1&key2=value2&key2=value3'
 >>> 
-
 
 for x in range(len(a)): 
     print a[x], 
